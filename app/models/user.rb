@@ -2,14 +2,19 @@
 #
 # Table name: users
 #
-#  id             :integer          not null, primary key
-#  comments_count :integer
-#  likes_count    :integer
-#  private        :boolean
-#  username       :string
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id              :integer          not null, primary key
+#  comments_count  :integer
+#  likes_count     :integer
+#  password_digest :string
+#  private         :boolean
+#  username        :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
+# New addition with the change
+# .password
+# .password_confirmation 
+# Both have been added via migration in Add_user_digest
 
 class User < ApplicationRecord
 
@@ -19,6 +24,9 @@ class User < ApplicationRecord
       :uniqueness => { :case_sensitive => false }
     }
   )
+
+  has_secure_password
+  
 
   def comments
     return Comment.where({ :author_id => self.id })
