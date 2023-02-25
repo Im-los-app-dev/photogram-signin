@@ -100,7 +100,8 @@ class UsersController < ApplicationController
       if  this_user.authenticate(a_pass)  
 
       session.store(:user_id, this_user.id)
-      redirect_to("/users/#{this_user.username}", {:notice=> "Welcome back, #{this_user.username}!"})
+      #redirect_to("/users/#{this_user.username}", {:notice=> "Welcome back, #{this_user.username}!"})
+      redirect_to("/", {:notice=> "Welcome back, #{this_user.username}!"})
       else
         redirect_to("/user_sign_in", {:alert => "Nice try, sucker!"})
       end

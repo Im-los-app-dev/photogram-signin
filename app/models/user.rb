@@ -11,10 +11,6 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
-# New addition with the change
-# .password
-# .password_confirmation 
-# Both have been added via migration in Add_user_digest
 
 class User < ApplicationRecord
 
